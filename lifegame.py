@@ -23,7 +23,7 @@ def set_board(data):
 
 def printBoard(board):
     ###########################################################
-    # 학생들은 이 부분을 구현하여 프로그램을 완성하도록 하세요.
+    # git test git test git test git test git test git test 
     ###########################################################
     pass
 
@@ -31,7 +31,7 @@ def runLifeGame(board):
     cur_board = board[:]
     next_board = cur_board[:]
     ###########################################################
-    # 학생들은 이 부분을 구현하여 프로그램을 완성하도록 하세요.
+    # git test git test git test git test git test git test 
     ###########################################################
     pass
     return next_board
