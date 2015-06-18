@@ -1,7 +1,8 @@
+
 import sys
 sys.path.append("/home/Python-3.4.3/lifegame")
 
-import life_game
+import lifegame
 import os
 import curses
 
