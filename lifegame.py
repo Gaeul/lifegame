@@ -1,3 +1,5 @@
+import copy
+
 def load():
     inputfile = open("/home/user/Python-3.4.3/lifegame/input_data.txt",'r')
     data = inputfile.read()
@@ -6,6 +8,7 @@ def load():
  
 
 def set_board(data):
+    print(data)
     game_cell = []
     for i in range(0, 8):
         game_cell.append(data[(i*9) : ((i+1)*9 -1) ])
@@ -14,7 +17,7 @@ def set_board(data):
 
     for i in range(0, len(game_cell)):
         for j in range(0, len(game_cell)):
-            if(game_cell[i][j]=='X'):
+            if(game_cell[i][j]=='x'):
                 cur_board[i][j]=0
             else:
                 cur_board[i][j]=1
@@ -22,14 +25,15 @@ def set_board(data):
     return cur_board
 
 def printBoard(board):
-#lifegame.stdscr = curses.initscr()
-#curses.curs_set(0)
+    stdscr.clear()
     curses.start_color()
-    curses.init_pair(1, curses.COLOR_RED, COLOR_BLACK)
-    lifegame.stdscr.attron(curses.color_pair(1))
-    lifegame.stdscr.addstr(cur_board)
-    lifegame.stdscr.refresh()
-    lifegame.stdscr.getch()
+    curses.init_pair(1, curses.COLOR_RED, curses.COLOR_BLACK)
+
+    stdscr.attron(curses.color_pair(1))
+    stdscr.border("#","#","#","#","#","#","#","#")
+    stdscr.addstr(cur_board)
+    stdscr.refresh()
+    stdscr.getch()
     board = next_board
     pass
 
@@ -38,11 +42,18 @@ def runLifeGame(board):
     next_board = copy.deepcopy(cur_board)
 
     alive_cell = 0
-    
-    for i in range(cur_board[i], cur_board[i+2]):
-        for j in range(cur_board[j], cur_board[j+2]):
-            if cur_board[i][j] == 1:
-                alive_cell += 1
+
+    x = cur_board
+    y = cur_board
+
+    for a in range(8):
+        for i in range(0, 2):
+            for j in range(0, 2):
+                if cur_board[i][j] == 1:
+                    alive_cell += 1
+    x += 1
+    y += 1
+
     return alive_cell
 
 
